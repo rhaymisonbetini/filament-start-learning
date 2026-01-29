@@ -16,6 +16,13 @@ class ClassesTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
+                TextColumn::make('sections.name')
+                    ->label('Sections')
+                    ->badge(),
+                TextColumn::make('students_count')
+                    ->label('Students')
+                    ->badge()
+                    ->counts('students'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

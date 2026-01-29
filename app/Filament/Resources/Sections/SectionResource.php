@@ -18,9 +18,11 @@ class SectionResource extends Resource
 {
     protected static ?string $model = Section::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::RectangleStack;
 
     protected static ?string $recordTitleAttribute = 'name';
+
+    protected static string|null|\UnitEnum $navigationGroup = 'Academic Management';
 
     public static function form(Schema $schema): Schema
     {
@@ -46,5 +48,13 @@ class SectionResource extends Resource
             'create' => CreateSection::route('/create'),
             'edit' => EditSection::route('/{record}/edit'),
         ];
+    }
+
+    /**
+     * @return string|null
+     */
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }

@@ -18,7 +18,9 @@ class StudentResource extends Resource
 {
     protected static ?string $model = Student::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::UserGroup;
+
+    protected static string|null|\UnitEnum $navigationGroup = 'Academic Management';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -46,5 +48,13 @@ class StudentResource extends Resource
             'create' => CreateStudent::route('/create'),
             'edit' => EditStudent::route('/{record}/edit'),
         ];
+    }
+
+    /**
+     * @return string|null
+     */
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }

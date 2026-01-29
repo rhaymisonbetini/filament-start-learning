@@ -18,7 +18,9 @@ class ClassesResource extends Resource
 {
     protected static ?string $model = Classes::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::AcademicCap;
+
+    protected static string|null|\UnitEnum $navigationGroup = 'Academic Management';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -46,5 +48,13 @@ class ClassesResource extends Resource
             'create' => CreateClasses::route('/create'),
             'edit' => EditClasses::route('/{record}/edit'),
         ];
+    }
+
+    /**
+     * @return string|null
+     */
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }
