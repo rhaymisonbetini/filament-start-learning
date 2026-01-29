@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Students\Schemas;
 use App\Models\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
 class StudentForm
@@ -36,6 +37,9 @@ class StudentForm
                 TextInput::make('email')
                     ->label('Email address')
                     ->email()
+                    ->required(),
+                Toggle::make('active')
+                    ->label('Active')
                     ->required(),
             ]);
     }

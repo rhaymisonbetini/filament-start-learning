@@ -54,6 +54,7 @@ class DatabaseSeeder extends Seeder
                             'section_id' => $sectionId,
                             'name' => "Student {$className}-{$sectionName}-{$i}",
                             'email' => Str::slug($className . '-' . $sectionName . '-' . $i) . '@school.test',
+                            'active' => (boolean)rand(0, 1),
                             'created_at' => now(),
                             'updated_at' => now(),
                         ]);
