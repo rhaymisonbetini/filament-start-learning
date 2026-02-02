@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Students\Tables;
 use App\Exports\StudentExport;
 use App\Models\Classes;
 use App\Models\Section;
+use App\Models\Student;
 use Filament\Actions\Action;
 use Filament\Actions\BulkAction;
 use Filament\Actions\BulkActionGroup;
@@ -90,6 +91,9 @@ class StudentsTable
             ->recordActions([
                 EditAction::make(),
                 Action::make('download Pdf')
+                    ->url(function (Student $record) {
+                        return route('student.pdf', $record);
+                    })
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
